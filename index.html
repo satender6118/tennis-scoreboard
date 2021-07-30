@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Assignment</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body ng-app="angularTennis" ng-controller="tennisCtrl">
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1 class="title">Tennis Game</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12" ng-hide="started">
+				<h2 class="inputnames">Please, enter the players name</h2>
+			</div>
+		</div>
+		<div class="row" ng-hide="started">
+			<div class="col-xs-6">
+				<div class="input-group">
+  						<span class="input-group-addon" id="basic-addon3">Player 1: </span>
+  						<input type="text" class="form-control" ng-model="players[0].name">
+				</div>
+			</div>
+			<div class="col-xs-6">
+				<div class="input-group">
+  						<span class="input-group-addon" id="basic-addon3">Player 2: </span>
+  						<input type="text" class="form-control" ng-model="players[1].name">
+				</div>
+			</div>
+		</div>
+		<div class="row" ng-hide="started">
+			<div class="col-xs-12 totalsets">
+				 <input type="radio" ng-model="totalsets" value="3"> 3 Sets<br><input type="radio" ng-model="totalsets" value="5"> 5 Sets
+			</div>
+		</div>
+		<div class="row" ng-hide="started">
+			<div class="col-xs-12" id="start-btn-container"><button class="btn btn-success btn-lg" ng-click="startGame()">START GAME</button></div>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="container" ng-show="started">
+		<div class="row">
+			<div class="col-xs-6 whiteborder namewrapper"><img ng-src="{{players[0].pic}}" class="playerpic">{{players[0].name}}</div>
+			<div class="col-xs-6 whiteborder namewrapper"><img ng-src="{{players[1].pic}}" class="playerpic">{{players[1].name}}</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 messageboard whiteborder">
+				&nbsp;
+				<span ng-show="deuce">Loose</span>
+				<span ng-show="tiebreak">TIE BREAK</span>
+				<span ng-show="finished">Congratulations: {{winner.name}} WON!</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-6 racketwrapper whiteborder">
+				<button class="btn btn-success racketbtn" ng-click="scorePoint(0);" ng-disabled="finished"><img src="image/racket.svg"></button>
+			</div>
+			<div class="col-xs-6 racketwrapper whiteborder">
+				<button class="btn btn-success racketbtn" ng-click="scorePoint(1)" ng-disabled="finished"><img src="image/racket.svg"></button>
+			</div>
+		</div>
+	</div>
+
+	<div class="container" ng-show="started">
+		<div class="row">
+			<div class="col-xs-12 tablewrapper">
+				<table class="scoretable">
+					<tr>
+						<td>{{players[0].name}}</td>
+						<td ng-repeat="set in sets">{{ set[0] }}</td>
+						<td class="spacer">&nbsp;</td>
+						<td><span ng-hide="players[0].advantage || players[1].advantage">{{players[0].score}}</span><span ng-show="players[0].advantage">A</span></td>
+					</tr>
+					<tr class="middlespacer">
+						<td></td>
+						<td ng-repeat="set in sets" class="setheader">SET {{ $index+1 }}</td>
+						<td class="spacer">&nbsp;</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>{{players[1].name}}</td>
+						<td ng-repeat="set in sets">{{ set[1] }}</td>
+						<td class="spacer">&nbsp;</td>
+						<td><span ng-hide="players[0].advantage || players[1].advantage">{{players[1].score}}</span><span ng-show="players[1].advantage">A</span></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<script src="app/app.js"></script>
+	<script src="app/controllers.js"></script>
+</body>
+</html>

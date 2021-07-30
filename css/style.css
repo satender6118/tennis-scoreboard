@@ -1,0 +1,114 @@
+@import url(https://fonts.googleapis.com/css?family=Orbitron);
+
+body{
+	background-color: #bd41a5;
+	color: black;
+}
+
+a{
+	color: rgb(255,247,0);
+}
+
+a:hover{
+	color: rgba(255,247,0,0.7);
+}
+
+h1.title{
+	text-align: center;
+}
+
+div#start-btn-container{
+	text-align: center;
+	padding: 25px;
+}
+
+.totalsets{
+	text-align: center;
+	padding: 10px;
+	font-size: 1.5em;
+}
+
+.racketwrapper{
+	text-align: center;
+	padding: 40px 0px;
+}
+
+.racketbtn{
+	padding: 25px;
+}
+
+.racketbtn img{
+	height: 100px;
+	width: auto;
+}
+
+.whiteborder{
+	border: 5px solid white;
+}
+
+.namewrapper{
+	padding: 10px;
+	font-size: 2em;
+	text-align: center;
+}
+
+.messageboard{
+	text-align: center;
+	font-size: 1.5em;
+	padding: 10px;
+	font-family: 'Orbitron', 'Courier new', Courier, sans-serif;
+	background-color: #333;
+	color: rgb(255,247,0);
+}
+
+.scoretable{
+	font-family: 'arial';
+	margin: 5px auto;
+	background-color:#fff;
+	border-collapse: collapse;
+	color: black;
+	text-align: center;
+	font-size: 1.25em;
+}
+
+.scoretable td{
+	border: 2px solid black;
+	padding: 5px;
+	min-width: 50px;
+}
+
+td.spacer{
+	background-color: black;
+	max-width: 15px;
+}
+
+td.setheader{
+	font-size: 0.5em;
+	text-transform: uppercase;
+}
+
+tr.middlespacer td{
+	padding: 0px;
+}
+
+#iconcredits{
+	text-align: center;
+}
+
+.inputnames{
+	text-align: center;
+}
+
+img.playerpic{
+	height: 50px;
+    vertical-align: middle;
+    border-radius: 50%;
+    border: 3px solid white;
+    margin-right: 15px;
+    width: 50px;
+}
+
+#bysergibyte{
+	text-align: center;
+	font-size: 1.25em;
+}
